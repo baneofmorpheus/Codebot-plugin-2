@@ -1,0 +1,757 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" type="text/css" href="fpt-style.css"> -->
+
+<style type="text/css">
+  body{
+
+    font-size: 30px;
+  }
+
+
+
+
+
+
+
+.ftp-spinner{
+  display:none !important; 
+  /*z-index: -1;*/
+}
+  .fpt-small{font-size: 1.2em;
+              font-style: italic;}
+
+  .fpt-numbers{
+    font-weight:bold;
+  }
+
+
+   .bs-example{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .hide23{
+        border-style:none !important;
+    }
+
+    .tab-pane{margin:20px;}
+
+
+    .selected{
+        border-bottom: 2px solid #FF7F50;
+    }
+     .fpt-small{font-size: 0.8em;
+                  font-style: italic;}
+
+
+    .fpt-label{
+    font-size: 1.2em;
+  }
+  .fpt-small{font-size: 0.9em;
+              font-style: italic;}
+
+
+    input{
+    font-size:1.0em !important ;}  
+    .btn{
+      font-size:1.0em ;
+
+    }   
+
+    input[type=checkbox] {
+        transform: scale(1.5);
+        /*height: 40px !important;*/
+    }   
+    .form-check-label{
+       font-size:1.0em ;
+       margin-left: 10px;
+
+    }   
+     .tab-content{width:100%;}
+     .form-control{width:80% !important;}
+
+     @media (min-device-width: 768px) and (max-device-width : 1024px){
+     	  .form-control{width:50% !important;}
+     	   body{font-size: 16px;}
+  
+ 
+  
+}
+@media (min-width: 1025px) {
+    .form-control{width:40% !important;}
+     body{font-size: 13px;}
+      input[type=checkbox] {
+        transform: scale(1.3);
+       
+    } 
+    }
+
+
+
+      
+
+    @media screen and (max-device-width: 800px) {
+    /*  li {width:50%;}*/
+     
+      .fpt-ul{display:none !important;}
+    }
+
+    
+
+
+
+    .spinner-border{
+    color: #FF7F50 !important;
+    }
+
+
+
+    .fpt-h3{
+        font-size: 1.5vw;
+        color:black;
+    }
+    
+  
+
+    .fpt-a{
+        background-color: #fff !important;
+    }
+    .fpt-ul:hover{
+        color:transparent!important;
+    }
+
+   
+
+    .fpt-ul{
+        border-style:none !important;
+         /*border-bottom: 2px solid #FF7F50  !important;*/
+    }
+
+
+
+    /*{
+        display: inline !important;
+        color:black;
+    }*/
+    .span-active{border:2px solid #FF7F50;
+        border-radius:100%;
+        font-size: 15px;
+        padding-right: 5px; 
+        padding-left: 5px;
+        margin-right:5px;  
+        margin-left:5px;
+        margin-top: -5px; 
+        color: white;
+        background-color: #FF7F50; }
+
+
+
+        .span-inactive{border:2px solid grey;
+          border-radius:100%;
+          font-size: 15px;
+          padding-right: 5px; 
+          padding-left: 5px;
+          margin-right:5px;  
+          margin-left:5px;
+          margin-top: -5px; 
+          color: grey !important;
+          background-color: white; } 
+
+        .inactive{color:grey !important;}  
+
+        .progress-bar{ background-color: #FF7F50;}
+
+        .fpt-menu-link{
+          font-family:Montserrat;
+        }
+
+        #site-header{
+          display:none !important;
+
+        }
+
+        #site-header-inner{
+          display:none !important;
+        }
+
+        #top-bar-wrap{
+          display:none !important;
+
+        }
+  
+</style>
+
+</head>
+<body>
+ 
+
+
+
+        <ul class="nav fpt-ul ml-0" id="pills-tab" role="tablist">
+          <li class="nav-item mr-5">
+           
+           
+              <img src="wp-content/plugins/codebot/images/codebot.png" alt="" class="img-fluid " width="190px" height="50px" >
+           
+          </li>
+          <li id="" class="nav-item fpt-li pt-3">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-profile" aria-selected="false"><span class="span-active">1</span><h3 class="fpt-h3 d-inline">About Your Website</h3></a>
+          </li>
+          <li id="one" class="nav-item pt-3">
+            <a class="nav-link" id="pills-contact-ta" data-toggle="" href="#pills-profile" role="tab" aria-controls="pills-contac" aria-selected="false">  <span class="span-inactive">2</span><h3 class="fpt-h3 inactive d-inline">Website  Layout</h3></a>
+          </li>
+          <li id="two" class="nav-item pt-3">
+            <a class="nav-link" id="pills-contact-ta" data-toggle="" href="#pills-contacts" role="tab" aria-controls="pills-contac" aria-selected="false"><span class="span-inactive">3</span><h3 class="fpt-h3 inactive d-inline">More Website Layout</h3></a>
+          </li>
+        </ul>
+        <div class="progress">
+          <div id="progbar" class="progress-bar" role="progressbar" style="width: 39%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+
+
+
+
+<div class="row">
+
+  <div id="spinner-id" class="col-4  offset-4 mt-5 ftp-spinner ">
+     
+  <div id="spinner"  class="ftp-spinner ml-lg-5 d-block text-center justify-content-center ">
+    <div class="spinner-border" style="width: 8rem; height: 8rem;" role="status">
+      <span class="sr-only">Loading...</span>
+
+    </div>
+            <p id="fpt-spinner-caption" class="" style="font-size:2.5em; " >Please Wait</p>
+  </div>
+  
+          
+        
+
+  </div>
+
+
+
+
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            
+
+
+
+                                    <!-- Tabs content below -->
+
+            <form class="fpt-form" enctype="multipart/form-data" method="post" action="process.php">
+              
+              <div class="form-group">
+                <label class="fpt-label" for="question5"><span class="fpt-numbers">1.</span> What is your name</label><br>  
+                <input type="text" class="form-control" id="question5" placeholder="Example- John Paul" name="clientName">
+              </div>
+
+
+              <div class="form-group">
+                <label class="fpt-label" for="question5"><span class="fpt-numbers">2.</span> What is your email address</label><br> 
+                <input type="text" class="form-control" id="question5" placeholder="Example- johnpaul@gmail.com" name="clientEmail">
+              </div>
+
+              <div class="form-group">
+                <label class="fpt-label" for="question5"><span class="fpt-numbers">3.</span> What is your phone number</label><br>  
+                <input type="text" class="form-control" id="question8" placeholder="Example- 08111111111" name="clientNumber">
+              </div>
+
+
+
+
+              <div class="form-group">
+                <label class="fpt-label" ><span class="fpt-numbers">4.</span> What type of organization are you?</label><br>  
+                <input type="text" class="form-control" id="question1"  placeholder="Example-Bakery,Bank,e.t.c" name="organisationType">
+                
+              </div>
+             <div class="form-group">
+                <label class="fpt-label" ><span class="fpt-numbers">5.</span> What name would you like your website to have?</label><br>  
+                <input type="text" class="form-control" id="question2"  placeholder="Example- John's Bookshop" name="websiteName">
+                
+              </div>
+              <div class="form-group">
+                  <label class="fpt-label" ><span class="fpt-numbers">6.</span> If you have a logo upload it here</label><br> 
+                  <input type="file" class="form-control" id="logofile"  name="logo"><br> 
+                  <small class="ml-3 fpt-small">Logo format:JPG, JPEG and PNG || Logo size must be less than 20MB </small>
+                  
+              </div>
+               
+           
+                  
+              
+
+              <input type="hidden" name="key1" value="set">
+            
+            </form>
+              <button id="filebtn" class="btn fpt-btn btn-primary">Move to the next section</button>
+              <input type="hidden" name="" value="one">
+
+
+            </div>
+
+            <!-- tab content two -->
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <form class="fpt-form" method="post" action="process.php">
+
+
+
+
+              <div class="form-group">
+                            <label class="fpt-label" ><span class="fpt-numbers">1.</span> Do you want a place to display photos?</label><br>
+                            <div class="ml-4 form-check form-check-inline">
+                            <input class="form-check-input fpt-yes" type="checkbox" id="inlineCheckbox1" value="yes" name="displayPhotos">
+                            <label class="form-check-label" >Yes</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                            <input class="form-check-input fpt-no" type="checkbox" id="inlineCheckbox2" value="no" name="displayPhotos">
+                            <label class="form-check-label" >No</label>
+                            </div>
+                        
+               </div>
+
+              
+
+
+
+                <div class="form-group">
+                              <label class="fpt-label" ><span class="fpt-numbers">2.</span> Do you want a place to display team members?</label><br>
+                              <div class="form-check form-check-inline">
+                              <input class="ml-4 form-check-input fpt-yes" type="checkbox" id="inlineCheckbox1" value="yes" name="teamMembersSection">
+                              <label class="form-check-label" >Yes</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                              <input class="form-check-input fpt-no" type="checkbox" id="inlineCheckbox2" value="no" name="teamMembersSection">
+                              <label class="form-check-label" 
+                              >No</label>
+                              </div>
+                          
+                 </div>
+
+
+
+
+
+               
+              <div class="form-group">
+                  <label class="fpt-label" ><span class="fpt-numbers">3.</span> Do you want an About page on your Website?</label> <br>
+                  <div class="form-check form-check-inline">
+                  <input class="form-check-input ml-4 fpt-yes" type="checkbox" id="inlineCheckbox1" value="yes" name="aboutPage">
+                  <label class="form-check-label ">Yes</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                  <input class="form-check-input fpt-no" type="checkbox" id="inlineCheckbox2" value="no" name="aboutPage">
+                  <label class="form-check-label">No</label>
+                  </div>
+              
+              </div>
+              <div class="form-group">
+                  <label class="fpt-label" ><span class="fpt-numbers">4.</span> Do you want a features section on your page to highlight a few bullet points about what you do?.</label><br>
+                  <div class="form-check form-check-inline">
+                  <input class="form-check-input ml-4 fpt-yes" type="checkbox" id="inlineCheckbox1" value="yes" name="featuresSection">
+                  <label class="form-check-label" >Yes</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                  <input class="form-check-input fpt-no" type="checkbox" id="inlineCheckbox2" value="no" name="featuresSection">
+                  <label class="form-check-label" >No</label>
+                  </div>
+                 
+                  
+                </div>
+                    <div class="form-group">
+                                  <label class="fpt-label" ><span class="fpt-numbers">5.</span> Do you want a Contact Form on your Website?</label><br>
+                                  <div class="form-check form-check-inline">
+                                  <input class="ml-4 form-check-input fpt-yes" type="checkbox" id="inlineCheckbox1" value="yes" name="contactForm">
+                                  <label class="form-check-label" >Yes</label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                  <input class="form-check-input fpt-no" type="checkbox" id="inlineCheckbox2" value="no" name="contactForm">
+                                  <label class="form-check-label" >No</label>
+                                  </div>
+                              
+                     </div>
+
+
+                     <div class="form-group">
+                                   <label class="fpt-label" ><span class="fpt-numbers">6.</span> Do you want a Form for people to join your mailing list?</label><br>
+                                   <div class="form-check form-check-inline">
+                                   <input class="ml-4 form-check-input fpt-yes" type="checkbox" id="inlineCheckbox1" value="yes" name="mailingList">
+                                   <label class="form-check-label" >Yes</label>
+                                   </div>
+                                   <div class="form-check form-check-inline">
+                                   <input class="form-check-input fpt-no" type="checkbox" id="inlineCheckbox2" value="no" name="mailingList">
+                                   <label class="form-check-label" >No</label>
+                                   </div>
+                               
+                      </div>
+                       
+                         <div class="form-group">
+                                       <label class="fpt-label" ><span class="fpt-numbers">7.</span> Do you want our branding services?</label><br>
+                                       <div class="form-check form-check-inline">
+                                       <input class="form-check-input ml-4 fpt-yes" type="checkbox" id="inlineCheckbox1" value="yes" name="brandingService">
+                                       <label class="form-check-label" >Yes</label>
+                                       </div>
+                                       <div class="form-check form-check-inline">
+                                       <input class="form-check-input fpt-no" type="checkbox" id="inlineCheckbox2" value="no" name="brandingService">
+                                       <label class="form-check-label">No</label>
+                                       </div>
+                                       
+                                   
+                          </div>
+                          <div class="form-group">
+                                        <label class="fpt-label"><span class="fpt-numbers">8.</span> Do you want our Content services?</label><br>
+                                        <div class="form-check form-check-inline">
+                                        <input class="form-check-input ml-4 fpt-yes" type="checkbox" id="inlineCheckbox1" value="yes" name="contentService">
+                                        <label class="form-check-label" >Yes</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                        <input class="form-check-input fpt-no" type="checkbox" id="inlineCheckbox2" value="no" name="contentService">
+                                        <label class="form-check-label" >No</label>
+                                        </div>
+                                        
+                                    
+                           </div>
+                           <div class="form-group">
+                                         <label class="fpt-label" ><span class="fpt-numbers">9.</span> Would you prefer a professional or friendly website design?</label><br>
+                                         <div class="form-check form-check-inline">
+                                         <input class="form-check-input ml-4 fpt-yes" type="checkbox" id="professionalInput" value="professional" name="designType">
+                                         <label class="form-check-label " for="inlineCheckbox1">Professional</label>
+                                         </div>
+                                         <div class="form-check form-check-inline">
+                                         <input class="form-check-input" type="checkbox" id="friendlyInput" value="friendlyInput" name="designType">
+                                         <label class="form-check-label">Friendly</label>
+                                         </div>
+                                         <div class="form-check form-check-inline">
+                                         <input class="form-check-input" type="checkbox" id="bothInput" value="bothInput" name="designType">
+                                         <label class="form-check-label" >Both</label>
+                                         </div>
+
+                                     
+                            </div>
+                     
+
+
+                     <input type="hidden" name="key2" value="set">
+            </form>
+            
+              <button class="two btn btn-primary fpt-btn">Move to next section</button>
+              <input type="hidden" name="" value="two">
+
+          </div>
+         
+         <!-- tab content three -->
+          <div class="tab-pane fade" id="pills-contacts" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <form class="fpt-form" method="post" action="process.php" >
+
+
+              
+                              
+            
+            
+              <div class="form-group">
+                  <label class="fpt-label" ><span class="fpt-numbers">1.</span> Seen a site design that you like somewhere?. Enter the name of the site below.</label><br>  
+                  <input type="text" class="form-control" id="question4"  placeholder=" Example- www.example.com"><br>  
+                  <small class="ml-3 fpt-small">Leave this blank if you don't have any site you like</small>
+                  
+                </div>
+
+              
+
+                <div class="form-group">
+                                 <label class="fpt-label" ><span class="fpt-numbers">2.</span> How many photos do you want to display?</label><br>  
+                                 <input type="text" class="form-control" id="question4"  placeholder=" Example- 1 or 2 or 5 or 7 e.t.c" name="NumberOfPhotos"><br>  
+                                 <small class="ml-3 fpt-small"> If you don't want a photo section leave this blank</small>
+                                 
+                               </div>
+                <div class="form-group">
+                                   <label class="fpt-label" for="question4"><span class="fpt-numbers">3.</span> How many team members do you want to display?</label><br> 
+                                   <input type="text" class="form-control" id="question4"  placeholder=" Example- 1 or 2 or 5 or 7 e.t.c" name="NumberOfTeamMembers"><br> 
+                                   <small class="ml-3 fpt-small"> If you don't want team members section leave this blank</small>
+                                   
+                </div>
+                <div class="form-group">
+                    <label class="fpt-label" ><span class="fpt-numbers">4.</span> What is your sites slogan?.</label><br> 
+
+                    
+                    <input type="text" class="form-control" id="question3"  placeholder="Example- MTN,everywhere you go." name="userSiteSlogan"><br>  <small class="ml-3 fpt-small"> If you don't want a slogan leave this blank</small>
+                    
+                  </div>
+                  <div class="form-group">
+                      <label class="fpt-label" ><span class="fpt-numbers">5.</span> Choose your domain name</label><br> 
+                      <input type="text" class="form-control" id="question4"  placeholder="Example-www.microsoft.com." name="domainName">
+                      
+                  </div>
+                 
+
+
+                     <input type="hidden" name="key3" value="set">
+                   </form>
+                   <button id="submit" class="fpt-btn btn btn-primary">Submit</button>
+          </div>
+        </div>
+</div>
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script>
+
+    $(document).ready(function($) {
+
+
+      // Full page tab animation
+
+      $('button').click(function(event) {
+        console.log('click');
+
+        
+
+
+                      // button_click();
+                    var id= $(this).next().val();
+
+
+                    
+
+
+                      if (id=="one") {
+                        $('#progbar').attr('style', 'width:58%');
+                      } else {
+                        $('#progbar').attr('style', 'width:100%');
+                      }
+
+
+
+
+
+                    var id="#"+id;
+                    // displays the current  id to confirm it's working
+                    console.log(id);
+                    $(id).find('span').removeClass('span-inactive');
+                    $(id).find('span').addClass('span-active');
+                    $(id).find('h3').removeClass('inactive');
+                    // $(id).addClass('selected');
+                    $(id).find('a').attr('data-toggle', 'pill');
+                    $(id).find('a').trigger('click');
+
+
+    });
+
+
+
+      // submits the image after the submit(move to next section) button on first tab section is clicked
+
+
+      $('#filebtn').click(function(event) {
+
+        var file =$('#logofile').prop('files')[0];
+        console.log(file);
+        if ($.type(file)!=="undefined") {
+                 var ajaxurl='<?php echo admin_url("admin-ajax.php") ?>';
+                 var formData=new FormData();
+
+                formData.append('file',file); 
+
+                formData.append('action','fpt_file');
+
+
+                  // form file image data upload
+                  $.ajax({
+                    url: ajaxurl,
+                    type: 'POST',
+                    contentType: false,
+                    processData: false,
+                    data: formData,
+                   success: function (response) {
+                      if (response=="invalidformat") {
+
+                          alert('Invalid image format,change your logo image or reload the page to fill the form without a logo');
+
+                      }
+
+                      if (response=="toobig") {
+
+                        alert('Your logo image is more than 20MB,please reduce the size before you upload');
+
+                      }
+                  }
+                })
+               
+
+
+        }
+
+
+
+          
+            
+    
+      });
+
+
+
+
+      // submits the three forms
+      // including the file
+
+      $('#submit').click(function(event) {
+                    $('.fpt-form').trigger('submit');
+                    
+                    $('#pills-tabContent').addClass('ftp-spinner');
+                    $('#spinner-id').removeClass('ftp-spinner');
+                    $('#spinner').removeClass('ftp-spinner');
+
+
+                   
+                  
+
+      });
+
+
+      // ajax below
+      var ajaxurl='<?php echo admin_url("admin-ajax.php") ?>';
+      $('.fpt-form').on('submit', function(event) {
+        event.preventDefault();
+            var data=$(this).serialize();
+            
+
+
+
+
+            
+            
+
+            
+           
+            console.log(data);
+
+            // form text data
+            var sentFile ={
+
+              action: 'fpt_ajax',
+              data: data,
+              security:'<?php echo wp_create_nonce("fpt-nonce"); ?>'
+            }
+
+
+            $.post(ajaxurl, sentFile, function(data) {
+              if (data=="true") {
+               
+
+                function pageRedirect() {
+                        window.location.replace("http://codebottechnologies.com");
+                    } 
+                    alert("Your request was sent successfully.Click the 'OK' button below to continue");
+                    pageRedirect();
+                  
+              }
+
+              
+              
+            });
+       
+        
+      });
+
+
+      // ensure only one checkbox can be checked
+
+        $('.fpt-yes').change(function(event) {
+        
+         if ($(this).is(':checked')) {
+         $(this).parent().siblings('div').find('input.fpt-no').prop('checked', false);
+
+         
+           };
+          
+          // 
+
+        });
+
+
+        $('.fpt-no').change(function(event) {
+          if ($(this).is(':checked')) {
+          // console.log("checked");
+
+          $(this).parent().siblings('div').find('input.fpt-yes').prop('checked', false);
+
+          
+          };
+        });
+
+
+
+        // handle professional input section
+        // look for question with professional input checkbox
+
+
+        $('#professionalInput').change(function(event) {
+          if ($(this).is(':checked')) {
+          // console.log("checked");
+
+          $(this).parent().siblings('div').find('input').prop('checked', false);
+
+          
+          };
+        });
+
+
+
+        $('#friendlyInput').change(function(event) {
+          if ($(this).is(':checked')) {
+          // console.log("checked");
+
+          $(this).parent().siblings('div').find('input').prop('checked', false);
+
+          
+          };
+        });
+
+
+
+        $('#bothInput').change(function(event) {
+          if ($(this).is(':checked')) {
+          // console.log("checked");
+
+          $(this).parent().siblings('div').find('input').prop('checked', false);
+
+          
+          };
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    });
+
+
+
+    </script>
+    
+
+</body>
+</html>
